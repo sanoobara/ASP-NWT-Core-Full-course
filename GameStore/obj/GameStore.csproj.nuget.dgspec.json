@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DEv\\C#\\ASP NWT Core Full course\\GameStore\\GameStore.csproj": {}
+    "D:\\DEv\\Charp\\ASP NWT Core Full course\\GameStore\\GameStore.csproj": {}
   },
   "projects": {
-    "D:\\DEv\\C#\\ASP NWT Core Full course\\GameStore\\GameStore.csproj": {
+    "D:\\DEv\\Charp\\ASP NWT Core Full course\\GameStore\\GameStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DEv\\C#\\ASP NWT Core Full course\\GameStore\\GameStore.csproj",
+        "projectUniqueName": "D:\\DEv\\Charp\\ASP NWT Core Full course\\GameStore\\GameStore.csproj",
         "projectName": "GameStore",
-        "projectPath": "D:\\DEv\\C#\\ASP NWT Core Full course\\GameStore\\GameStore.csproj",
+        "projectPath": "D:\\DEv\\Charp\\ASP NWT Core Full course\\GameStore\\GameStore.csproj",
         "packagesPath": "C:\\Users\\sanek\\.nuget\\packages\\",
-        "outputPath": "D:\\DEv\\C#\\ASP NWT Core Full course\\GameStore\\obj\\",
+        "outputPath": "D:\\DEv\\Charp\\ASP NWT Core Full course\\GameStore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

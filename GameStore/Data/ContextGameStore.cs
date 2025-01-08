@@ -11,6 +11,9 @@ public class GameStoreContext(DbContextOptions<GameStoreContext> options)
 
     public DbSet<Genre> Genres =>Set<Genre>();
 
+    public DbSet<Employee> Employees =>Set<Employee>();
+    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Genre>().HasData(
@@ -20,5 +23,11 @@ public class GameStoreContext(DbContextOptions<GameStoreContext> options)
             new{Id = 4, Name = "Racing"},
             new{Id = 5, Name = "Kids and Family"}
         );
+        modelBuilder.Entity<Employee>().HasData(
+            new {id = 1, name = "John", surname = "Doe", dayOfBorn = new DateTime(1980, 1, 1), vocation = "Cooker"}
+
+        );
     }
+
+    
 }

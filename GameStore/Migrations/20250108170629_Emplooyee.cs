@@ -3,14 +3,32 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace GameStore.Data.Migrations
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
+namespace GameStore.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Emplooyee : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Employees",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    name = table.Column<string>(type: "TEXT", nullable: false),
+                    surname = table.Column<string>(type: "TEXT", nullable: false),
+                    dayOfBorn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    vocation = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employees", x => x.id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Genres",
                 columns: table => new
@@ -46,6 +64,18 @@ namespace GameStore.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Genres",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Fighting" },
+                    { 2, "Roleplaying" },
+                    { 3, "Sports" },
+                    { 4, "Racing" },
+                    { 5, "Kids and Family" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Games_GenreId",
                 table: "Games",
@@ -55,6 +85,9 @@ namespace GameStore.Data.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Employees");
+
             migrationBuilder.DropTable(
                 name: "Games");
 

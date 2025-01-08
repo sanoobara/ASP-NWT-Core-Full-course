@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace GameStore.Data.Migrations
+namespace GameStore.Migrations
 {
     [DbContext(typeof(GameStoreContext))]
     partial class GameStoreContextModelSnapshot : ModelSnapshot
@@ -16,6 +16,42 @@ namespace GameStore.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
+
+            modelBuilder.Entity("GameStore.Entities.Employee", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("dayOfBorn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("surname")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("vocation")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            dayOfBorn = new DateTime(1980, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "John",
+                            surname = "Doe",
+                            vocation = "Cooker"
+                        });
+                });
 
             modelBuilder.Entity("GameStore.Entities.Game", b =>
                 {

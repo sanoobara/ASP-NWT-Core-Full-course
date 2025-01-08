@@ -6,9 +6,9 @@ POST http://localhost:5220/games
 Content-Type: application/json
 
 {
-    "name":"Street2 Figher XIV",
-    "genreId":3,
-    "price":63.99,
+    "name":"FIFA 22",
+    "genreId":1,
+    "price":43.99,
     "releaseDate":"2014-08-22"
 }
 ###

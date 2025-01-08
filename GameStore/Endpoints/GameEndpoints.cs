@@ -1,3 +1,4 @@
+
 using System;
 using GameStore.Data;
 using GameStore.Dtos;
@@ -11,17 +12,17 @@ public static class GameEndpoints
 {
     const string GetGameEndpointName = "GetGame";
 
-   
+
     public static RouteGroupBuilder MapGamesEndpoints(this WebApplication app)
     {
         var group = app.MapGroup("games")
                             .WithParameterValidation();
 
         //GET /games
-        group.MapGet("/", (GameStoreContext dbContext) => 
+        group.MapGet("/", (GameStoreContext dbContext) =>
             dbContext.Games
-                    .Include(game=>game.Genre)
-                    .Select(game=>game.ToGameSummaryDto())
+                    .Include(game => game.Genre)
+                    .Select(game => game.ToGameSummaryDto())
                     .AsNoTracking()
                     .ToListAsync());
 
@@ -30,8 +31,8 @@ public static class GameEndpoints
         {
             Game? game = await dbContext.Games.FindAsync(id);
 
-           
-            return game is null ? 
+
+            return game is null ?
             Results.NotFound() : Results.Ok(game.ToGameDetailsDto());
 
         })
@@ -42,18 +43,18 @@ public static class GameEndpoints
         {
             Game game = newGame.ToEntity();
             game.Genre = dbContext.Genres.Find(newGame.GenreId);
-                        
-            
+
+
             dbContext.Games.Add(game);
             await dbContext.SaveChangesAsync();
-            
+
 
             return Results.CreatedAtRoute(
-                GetGameEndpointName, 
-                new { id = game.Id }, 
+                GetGameEndpointName,
+                new { id = game.Id },
                 game.ToGameDetailsDto());
         });
-        
+
 
         //PUT /games
         group.MapPut("/{id}", async (int id, UpdateGameDto updateGame, GameStoreContext dbContext) =>
@@ -76,9 +77,9 @@ public static class GameEndpoints
         group.MapDelete("/{id}", async (int id, GameStoreContext dbContext) =>
         {
             await dbContext.Games
-                    .Where(game=>game.Id == id)
+                    .Where(game => game.Id == id)
                     .ExecuteDeleteAsync();
-            
+
 
             return Results.NoContent();
         });

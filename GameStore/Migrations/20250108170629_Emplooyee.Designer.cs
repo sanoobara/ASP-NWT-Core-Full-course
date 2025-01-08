@@ -8,17 +8,43 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace GameStore.Data.Migrations
+namespace GameStore.Migrations
 {
     [DbContext(typeof(GameStoreContext))]
-    [Migration("20250101162509_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250108170629_Emplooyee")]
+    partial class Emplooyee
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
+
+            modelBuilder.Entity("GameStore.Entities.Employee", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("dayOfBorn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("surname")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("vocation")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Employees");
+                });
 
             modelBuilder.Entity("GameStore.Entities.Game", b =>
                 {
@@ -59,6 +85,33 @@ namespace GameStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Genres");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Fighting"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Roleplaying"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Sports"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Racing"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Kids and Family"
+                        });
                 });
 
             modelBuilder.Entity("GameStore.Entities.Game", b =>
